@@ -95,6 +95,14 @@ class NotificationBanner extends PureComponent {
 
     if (props.duration === undefined)
       props.duration = NotificationBanner.defaultProps.duration
+
+    if (Platform.OS === 'ios')
+      props.duration *= 0.001
+    if (Platform.OS === 'android') {
+      props.duration -= 1000
+      if (props.duration <= 0) props.duration = 0
+    }
+
     if (props.enableProgress === undefined)
       props.enableProgress = NotificationBanner.defaultProps.enableProgress
 
