@@ -116,6 +116,9 @@ public class RNNotificationBannerModule extends ReactContextBaseJavaModule {
       alerter = alerter.setOnClickListener(new View.OnClickListener() {
         @Override
         public void onClick(View view) {
+          if (dismissable) {
+            Dismiss();
+          }
           if (onClickCallback != null) {
             onClickCallback.invoke();
 
